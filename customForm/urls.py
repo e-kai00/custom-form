@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from formapp import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('contracts/', views.contracts_create, name='contracts_create'),
+    path('status/', views.status_create, name='status_create'),
     path('admin/', admin.site.urls),
 ]
