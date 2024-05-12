@@ -13,12 +13,10 @@ class StatusForm(forms.ModelForm):
         }
 
 
-class ContractsForm(forms.ModelForm):
-    status = forms.ChoiceField(
-        choices = [('', '-----'),] + [(status.id, status.name) for status in Status.objects.all()] + [('add new', 'Add new')],
-        widget=forms.Select(attrs={'class': 'form-select'}),
-        label='Status'
-    )
+class ContractsForm(forms.ModelForm):  
+    def __init__(self, *args, **kwargs):
+        super(ContractsForm, self).__init__(*args, **kwargs)
+        self.fields['status'].choices = [('', '-----'),] + [(status.id, status.name) for status in Status.objects.filter(active=True)] + [('add new', 'Add new'),]
 
     class Meta:
         model = Contracts
@@ -28,6 +26,7 @@ class ContractsForm(forms.ModelForm):
         'client': forms.TextInput(attrs={'class': 'form-control'}),
         'start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         'end_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        'status': forms.Select(attrs={'class': 'form-select'}),
         }
 
         labels = {

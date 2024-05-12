@@ -7,12 +7,15 @@ def index(request):
     contracts = Contracts.objects.all()
     contracts_form = ContractsForm()  
     status_form = StatusForm()
+    statuses = Status.objects.all()
     context = {
         'contracts': contracts,
         'contracts_form': contracts_form,
         'status_form': status_form,
+        'statuses': statuses,
     }
     return render(request, 'formapp/index.html', context)
+
 
 def contracts_create(request):
     if request.method == 'POST':
@@ -21,6 +24,7 @@ def contracts_create(request):
             form.save()
             return redirect('index')
     return redirect('index')
+
 
 def status_create(request):
     if request.method == 'POST':
