@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'custom-form-7d0798145f7b.herokuapp.com/',
+    'custom-form-7d0798145f7b.herokuapp.com',
     '127.0.0.1',
 ]
 
