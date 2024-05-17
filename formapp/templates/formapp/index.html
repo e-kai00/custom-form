@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{% static 'formapp/styles.css' %}">
 
     <title>Custom Form</title>
+    <style>
+        .lst-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }       
+    </style>
 </head>
 
 <body>
@@ -62,7 +69,12 @@
                     <h4>List of statuses:</h4>
                     <ol>
                         {% for status in statuses %}
-                        <li> {{ status }}</li>
+                        <li class="lst-item"> {{ status }} 
+                            <form action="" method="">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-sm my-1">Delete</button>
+                            </form>
+                        </li>
                         {% endfor %}
                     </ol>
                 </div>
