@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import StatusForm, ContractsForm
 from .models import Status, Contracts
 
@@ -32,4 +32,10 @@ def status_create(request):
         if form.is_valid():
             form.save()
             return redirect('index')
+    return redirect('index')
+
+
+def delete_status(request, status_id):
+    status = get_object_or_404(Status, id=status_id)
+    status.delete()
     return redirect('index')

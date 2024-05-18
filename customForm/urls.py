@@ -21,5 +21,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('contracts/', views.contracts_create, name='contracts_create'),
     path('status/', views.status_create, name='status_create'),
+    path('delete/<int:status_id>', views.delete_status, name='delete_status'),
     path('admin/', admin.site.urls),
 ]

@@ -67,16 +67,17 @@
                 </form>
                 <div class="mt-3">
                     <h4>List of statuses:</h4>
-                    <ol>
+                    <ul class="ps-0">
                         {% for status in statuses %}
                         <li class="lst-item"> {{ status }} 
-                            <form action="" method="">
+                            <a href="{% url 'delete_status' status.id %}" class="btn btn-outline-danger btn-sm my-1">Delete</a>
+                            <!-- <form action="{% url 'delete_status' status.id %}" method="POST">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-outline-danger btn-sm my-1">Delete</button>
-                            </form>
+                            </form> -->
                         </li>
                         {% endfor %}
-                    </ol>
+                    </ul>
                 </div>
             </div>
         </div>
